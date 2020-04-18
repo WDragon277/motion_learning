@@ -72,4 +72,18 @@ class neuralNetwork:
         
         return final_outputs
    
-    
+    #입력, 은닉, 출력 노드의 수
+input_nodes = 3
+hidden_nodes = 3
+output_nodes = 3
+
+#학습률은 0.3 
+learning_rate = 0.3
+
+#신경망 인스턴스 생성
+n = neuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate)
+
+#데이터 
+data_file = 열기 ( "DATA / mnist_test_10.csv", 'r')
+data_list = data_file.readlines()
+data_file.close()
