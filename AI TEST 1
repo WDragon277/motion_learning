@@ -83,7 +83,22 @@ learning_rate = 0.3
 #신경망 인스턴스 생성
 n = neuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate)
 
-#데이터 
-data_file = 열기 ( "DATA / mnist_test_10.csv", 'r')
+#데이터 경로에 맞게 설정하시길바랍니다. 
+data_file = open( "DATA / mnist_train_100.csv", 'r')
 data_list = data_file.readlines()
 data_file.close()
+
+# 신경망 학습시키기
+
+#학습 데이터 모음 내의 모든 레코드 탐색
+for record in training_data_list:
+    #레코드를 쉼표에 의해 분리
+    all_values =record.split(',')
+    #입력 값의 범위와 값 조정
+    inputs = (numpy.asfarray(all_values[1:])/ 255.0 * 0.99)+0.01
+    # 결과 값 생성(실제 값인 0.99 외에는 모두 0.01)
+    targets = numpy.zeros(output_nodes) +0.01
+    # all_values[0]은 레코드에 대한 결과 값
+    targets[int(all_values[0])]=0.99
+    n.train(inputs, targets)
+    pass
