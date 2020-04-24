@@ -102,3 +102,20 @@ for record in training_data_list:
     targets[int(all_values[0])]=0.99
     n.train(inputs, targets)
     pass
+
+
+#파일 불러오기, 배열 데이터의 변수 지정
+test_data_file = open("DATA/mnist_test_10.csv",'r')
+test_data_list = test_data_file.readlines()
+test_data_file.close()
+
+#해당 값 프린트
+all_values = test_data_list[0].split(',')
+print(all_values[0])
+
+#해당 배열 이미지 띄우기
+image_array = numpy.asfarray(all_values[1:]).reshape((28,28))
+matplotlib.pyplot.imshow(image_array, cmap='Greys', interpolation='None')
+
+#배열값 나타내기
+n.query((numpy.asfarray(all_values[1:])/255.0*0.99)+0.01)
