@@ -10,14 +10,14 @@ from keras import layers
 from keras import models
 
 model = models.Sequential()
-model.add(layers.Conv2D(32,(7,7),activation='relu',
+model.add(layers.Conv2D(32,(5,5),activation='relu',
                                                 input_shape=(430,180,3)))
 model.add(layers.MaxPooling2D((2,2)))
-model.add(layers.Conv2D(64,(7,7),activation='relu'))
+model.add(layers.Conv2D(64,(5,5),activation='relu'))
 model.add(layers.MaxPooling2D((2,2)))
-model.add(layers.Conv2D(128,(7,7),activation='relu'))
+model.add(layers.Conv2D(128,(5,5),activation='relu'))
 model.add(layers.MaxPooling2D((2,2)))
-model.add(layers.Conv2D(128,(7,7),activation='relu'))
+model.add(layers.Conv2D(128,(5,5),activation='relu'))
 model.add(layers.MaxPooling2D((2,2)))
 
 model.add(layers.Flatten())
